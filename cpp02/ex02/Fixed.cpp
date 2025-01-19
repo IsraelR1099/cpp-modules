@@ -6,16 +6,15 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:40:53 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/08 21:05:05 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:36:52 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed(void)
+Fixed::Fixed(void) : _fixedPoint(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_fixedPoint = 0;
 }
 
 Fixed::~Fixed(void)
@@ -23,10 +22,9 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &copy)
+Fixed::Fixed(const Fixed &copy) : _fixedPoint(copy._fixedPoint)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
 }
 
 int	Fixed::getRawBits(void) const
@@ -61,12 +59,12 @@ Fixed::Fixed(const float value)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_fixedPoint / (1 << this->_fractBits));
+	return (static_cast<float>(this->_fixedPoint) / (1 << this->_fractBits));
 }
 
 int	Fixed::toInt(void) const
 {
-	return ((int)(roundf((float)this->_fixedPoint / (1 << this->_fractBits))));
+	return (static_cast<int>(roundf((float)this->_fixedPoint / (1 << this->_fractBits))));
 }
 
 std::ostream	&operator<<(std::ostream &output, const Fixed &copy)
