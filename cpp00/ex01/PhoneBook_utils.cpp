@@ -6,113 +6,63 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:39:00 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/23 20:40:32 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:48:40 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-static int	ft_is_nbr(std::string str)
+static int	ft_is_nbr(const std::string &str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
+	for (i = 0; str[i]; i++)
 	{
-		if (!isdigit(str[i]))
+		if (!std::isdigit(str[i]))
 			return (0);
-		i++;
 	}
 	return (1);
 }
 
 static bool	isValidString(const std::string &str)
 {
-	int	i;
-	int	len;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	len = str.length();
-	while (str[i])
-	{
-		if (isdigit(str[i]))
-			return (false);
-		if (std::isspace(str[i]))
-			counter++;
-		i++;
-	}
-	if (counter == len)
+	if (str.empty())
 		return (false);
-	return (!str.empty());
-}
-
-std::string	ft_first_name(void)
-{
-	std::string	new_line = "";
-
-	std::cout << "First name: ";
-	if (!std::getline(std::cin, new_line))
-		exit(0);
-	while (!isValidString(new_line))
+	for (size_t i = 0; i < str.size(); i++)
 	{
-		std::cout << "Parametro no valido, ingresar un valor nuevo." <<	std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "First name: ";
-		if (!std::getline(std::cin, new_line))
-			exit(0);
+		if (!std::isalpha(str[i]))
+			return (false);
 	}
-	return (new_line);
+	return (true);
 }
 
-std::string	ft_last_name(void)
+std::string	ft_getString(const std::string &msg)
 {
 	std::string	new_line;
 
-	std::cout << "Last name: ";
+	std::cout << msg;
 	if (!std::getline(std::cin, new_line))
-		exit(0);
+		std::exit(0);
 	while (!isValidString(new_line))
 	{
 		std::cout << "Parametro no valido. Ingresar valor de nuevo." << std::endl;
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Last name: ";
+		std::cout << msg;
 		if (!std::getline(std::cin, new_line))
-			exit(0);
+			std::exit(0);
 	}
 	return (new_line);
 }
 
-std::string	ft_nickname(void)
-{
-	std::string	new_line;
-
-	std::cout << "Nickname: ";
-	if (!std::getline(std::cin, new_line))
-		exit(0);
-	while (!isValidString(new_line))
-	{
-		std::cout << "Parametro no valido. Ingresar valor de nuevo." << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Nickname: ";
-		if (!std::getline(std::cin, new_line))
-			exit(0);
-	}
-	return (new_line);
-}
-
-unsigned int	ft_phone_number(void)
+unsigned int	ft_phone_number()
 {
 	std::string	number;
 	int			ret;
 
 	std::cout << "Phone number: ";
 	if (!std::getline(std::cin, number))
-		exit(0);
+		std::exit(0);
 	while (number.empty() || !ft_is_nbr(number))
 	{
 		std::cout << "Parametro no valido. Ingresar valor de nuevo." << std::endl;
@@ -120,27 +70,8 @@ unsigned int	ft_phone_number(void)
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Phone number: " << std::flush;
 		if (!std::getline(std::cin, number))
-			exit(0);
+			std::exit(0);
 	}
-	ret = atoi(number.c_str());
+	ret = std::atoi(number.c_str());
 	return (ret);
-}
-
-std::string	ft_secret(void)
-{
-	std::string	new_line;
-
-	std::cout << "Dark secret: ";
-	if (!std::getline(std::cin, new_line))
-		exit(0);
-	while (!isValidString(new_line))
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Parametro no valido. Ingresar valor de nuevo." << std::endl;
-		std::cout << "Dark secret: ";
-		if (!std::getline(std::cin >> std::ws, new_line))
-			exit(0);
-	}
-	return (new_line);
 }

@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 14:28:06 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/24 09:49:36 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:02:13 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <string.h>
 
-int	main(void)
+int	main()
 {
 	PhoneBook	book;
 	size_t		i;
@@ -39,9 +39,7 @@ int	main(void)
 			i++;
 		}
 		else if (line == "SEARCH")
-		{
 			book.ft_getContact();
-		}
 	}
 	return (0);
 }
