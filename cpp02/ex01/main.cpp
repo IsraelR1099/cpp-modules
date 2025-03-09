@@ -6,13 +6,13 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:53:53 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/06 14:00:31 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:55:05 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void )
+int main()
 {
 	Fixed a;
 	Fixed const b( 10 );
@@ -28,5 +28,7 @@ int main( void )
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	a.setRawBits(42);
+	std::cout << "a is " << a << std::endl;
 	return 0;
 }

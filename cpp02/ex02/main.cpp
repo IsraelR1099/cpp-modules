@@ -6,13 +6,13 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:51:29 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/08 20:31:18 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:07:38 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void )
+int main()
 {
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );

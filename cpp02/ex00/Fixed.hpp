@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:16:28 by irifarac          #+#    #+#             */
-/*   Updated: 2025/01/19 21:11:11 by israel           ###   ########.fr       */
+/*   Updated: 2025/03/09 21:54:48 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class	Fixed
 {
 	public:
-		Fixed(void);
+		Fixed();
 		Fixed(const Fixed &copy);
-		~Fixed(void);
-		int		getRawBits(void) const;
+		~Fixed();
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
 		Fixed	&operator=(const Fixed &copy);
 	private:
-		int					_fixedPoint;
-		static int const	_fractBits = 8;
+		int					m_fixedPoint;
+		static int const	m_fractBits = 8;
 };
 #endif
