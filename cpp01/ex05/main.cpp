@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:08:44 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/12 09:47:18 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:52:22 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(void)
 	std::cout << "Error" << std::endl;
 	test.complain("4");
 	std::cout << "Whatever value" << std::endl;
-	test.complain("a1");
+	test.complain("");
 	return (0);
 }

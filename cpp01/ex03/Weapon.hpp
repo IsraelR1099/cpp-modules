@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:18:06 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/02 20:59:41 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:45:24 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 class	Weapon
 {
 	public:
-		Weapon(std::string const name);
-		~Weapon(void);
+		explicit Weapon(const std::string &name);
+		~Weapon() {};
 		const std::string	&getType();
-		void				setType(std::string const name);
+		void				setType(const std::string &name);
 	private:
-		std::string	type;
+		std::string	m_type;
 };
 #endif

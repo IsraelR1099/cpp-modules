@@ -6,20 +6,20 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:38:16 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/25 20:39:31 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:27:25 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-static int	ft_is_nbr(std::string str)
+static int	ft_is_nbr(const std::string &str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!std::isdigit(str[i]))
 			return (0);
 		i++;
 	}
@@ -32,7 +32,7 @@ static void	ft_setN(int *N)
 
 	std::cout << "Numero de zombies: ";
 	if(!std::getline(std::cin, nbr))
-		exit(0);
+		std::exit(0);
 	while (nbr.empty() || !ft_is_nbr(nbr))
 	{
 		std::cout << "Parametro no valido, ingresar valor de nuevo." <<	std::endl;
@@ -40,10 +40,10 @@ static void	ft_setN(int *N)
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Numero de zombies: ";
 		if(!std::getline(std::cin, nbr))
-			exit(0);
+			std::exit(0);
 	}
-	*N = atoi(nbr.c_str());
-	if (*N > 1000)
+	*N = std::atoi(nbr.c_str());
+	if (*N > 1000 || *N < 0)
 	{
 		std::cout << "Para el carro quieres morir en un ataque zombie?.";
 		std::cout << "Rick Grimes solo puede con 1000." << std::endl;
@@ -51,13 +51,13 @@ static void	ft_setN(int *N)
 	}
 }
 
-static void	ft_setName(std::string *name)
+static void	ft_setName(std::string &name)
 {
 	std::string	str;
 
 	std::cout << "Nombre de los zombies: ";
 	if (!std::getline(std::cin, str))
-		exit(0);
+		std::exit(0);
 	while (str.empty())
 	{
 		std::cout << "Parametro no valido, ingresar valor de nuevo." <<	std::endl;
@@ -65,12 +65,12 @@ static void	ft_setName(std::string *name)
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Nombre de los zombies: ";
 		if(!std::getline(std::cin, str))
-			exit(0);
+			std::exit(0);
 	}
-	*name = str;
+	name = str;
 }
 
-int	main(void)
+int	main()
 {
 	Zombie		*horde;
 	int			i;
@@ -78,8 +78,13 @@ int	main(void)
 	std::string	name;
 
 	ft_setN(&N);
-	ft_setName(&name);
+	ft_setName(name);
 	horde = zombieHorde(N, name);
+	if (!horde)
+	{
+		std::cout << "Error al asignar memoria." << std::endl;
+		return (1);
+	}
 	i = 0;
 	while (i < N)
 	{

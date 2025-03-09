@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:29:14 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/02 21:10:17 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:40:44 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-int	main(void)
+int	main()
 {
 	{
 		Weapon club = Weapon("crude spiked club");

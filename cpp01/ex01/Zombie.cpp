@@ -6,33 +6,31 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:45:56 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/25 18:16:02 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:22:14 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void)
+Zombie::Zombie() : m_name("Zombie")
 {
-	return ;
 }
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie(const std::string &name) : m_name(name)
 {
-	this->_name = name;
 }
 
-Zombie::~Zombie(void)
+Zombie::~Zombie()
 {
-	std::cout << _name << " ha muerto." << std::endl;
+	std::cout << m_name << " ha muerto." << std::endl;
 }
 
-void	Zombie::announce(void)
+void	Zombie::announce() const
 {
-	std::cout << this->_name << ":" << " BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << m_name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::ft_name(std::string name)
+void	Zombie::setName(const std::string &name)
 {
-	this->_name = name;
+	m_name = name;
 }

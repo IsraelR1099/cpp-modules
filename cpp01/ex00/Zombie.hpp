@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:31:47 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/25 14:14:22 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:05:18 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 class	Zombie
 {
 	public:
-		Zombie(std::string str);
-		~Zombie(void);
-		void		announce(void);
+		explicit Zombie(const std::string &str);
+		~Zombie();
+		void		announce() const;
 	private:
-		std::string	name;
+		std::string	m_name;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie	*newZombie(const std::string &name);
+void	randomChump(const std::string &name);
 #endif

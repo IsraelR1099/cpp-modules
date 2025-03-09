@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:41:18 by irifarac          #+#    #+#             */
-/*   Updated: 2023/05/25 18:49:24 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:22:01 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 class	Zombie
 {
 	public:
-		Zombie(void);
-		Zombie(std::string name);
-		~Zombie(void);
-		void	ft_name(std::string name);
-		void	announce(void);
+		Zombie();
+		explicit Zombie(const std::string &name);
+		~Zombie();
+		void	setName(const std::string &name);
+		void	announce() const;
 	private:
-		std::string	_name;
+		std::string	m_name;
 };
 
-Zombie	*zombieHorde(int N, std::string name);
+Zombie	*zombieHorde(int N, const std::string &name);
 #endif

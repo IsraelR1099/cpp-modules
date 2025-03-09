@@ -6,29 +6,23 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:19:42 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/02 21:00:22 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:45:19 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string const name)
+Weapon::Weapon(const std::string &name) : m_type(name)
 {
-	this->type = name;
 }
 
-Weapon::~Weapon(void)
+const std::string	&Weapon::getType()
 {
-	return ;
-}
-
-const std::string	&Weapon::getType(void)
-{
-	std::string	&ref = type;
+	const std::string	&ref = m_type;
 	return (ref);
 }
 
-void	Weapon::setType(std::string const name)
+void	Weapon::setType(const std::string &name)
 {
-	this->type = name;
+	m_type = name;
 }
