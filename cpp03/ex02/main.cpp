@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 10:30:20 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/21 11:40:33 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/11 23:01:47 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-int	main(void)
+int	main()
 {
 	ClapTrap	test1("first Clap");
 	ScavTrap	stest1("first Scav");
