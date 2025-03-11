@@ -6,78 +6,81 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 10:12:03 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/26 10:27:09 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:58:55 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap() : m_name("default"), m_hitPoints(10), m_energyPoints(10), m_damage(0)
 {
-	std::cout << "Constructor de: " << name << " llamado" << std::endl;
-	this->_name = name;
-	this->_hitPoints = 10;
-	this->_energyPoints = 10;
-	this->_damage = 0;
+	std::cout << "Constructor de: " << m_name << " llamado" << std::endl;
 }
 
-ClapTrap::~ClapTrap(void)
+
+ClapTrap::ClapTrap(const std::string &name) : m_name(name),
+	m_hitPoints(10), m_energyPoints(10), m_damage(0)
 {
-	std::cout << "Destructor de: " << this->_name << " llamado" << std::endl;
+	std::cout << "Constructor de: " << m_name << " llamado" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &obj)
+ClapTrap::~ClapTrap()
+{
+	std::cout << "Destructor de: " << m_name << " llamado" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &obj)
+ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
-	this->_name = obj._name;
-	this->_hitPoints = obj._hitPoints;
-	this->_energyPoints = obj._energyPoints;
-	this->_damage = obj._damage;
+	m_name = obj.m_name;
+	m_hitPoints = obj.m_hitPoints;
+	m_energyPoints = obj.m_energyPoints;
+	m_damage = obj.m_damage;
 	return (*this);
 }
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->_energyPoints == 0)
+	if (m_energyPoints == 0)
 	{
-		std::cout << this->_name << " has no energy" << std::endl;
+		std::cout << m_name << " has no energy" << std::endl;
 		return ;
 	}
-	std::cout << this->_name << " attacks " << target << ", causing " << this->_damage << " points of damage!" << std::endl;
-	this->_energyPoints -= 1;
-	std::cout << "His amount of energy after attacking is: " << this->_energyPoints << std::endl;
+	std::cout << m_name << " attacks " << target << ", causing " << m_damage << " points of damage!" << std::endl;
+	m_energyPoints -= 1;
+	std::cout << "His amount of energy after attacking is: " << m_energyPoints << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_energyPoints == 0)
+	if (m_energyPoints == 0)
 	{
-		std::cout << this->_name << " has no energy" << std::endl;
+		std::cout << m_name << " has no energy" << std::endl;
 		return ;
 	}
-	std::cout << this->_name << " is repairing itself " << amount << " points" << std::endl;
-	this->_hitPoints += amount;
-	std::cout << "His amount of HP after repairing is: " << this->_hitPoints << std::endl;
-	this->_energyPoints -= 1;
-	std::cout << "His amount of energy after repairing is: " << this->_energyPoints << std::endl;
+	std::cout << m_name << " is repairing itself " << amount << " points" << std::endl;
+	m_hitPoints += amount;
+	std::cout << "His amount of HP after repairing is: " << m_hitPoints << std::endl;
+	m_energyPoints -= 1;
+	std::cout << "His amount of energy after repairing is: " << m_energyPoints << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->_energyPoints == 0)
+	if (m_energyPoints == 0)
 	{
-		std::cout << this->_name << " has no energy" << std::endl;
+		std::cout << m_name << " has no energy" << std::endl;
 		return ;
 	}
-	std::cout << this->_name << " takes " << amount << " points of damage" << std::endl;
-	this->_hitPoints -= amount;
-	std::cout << "His amount of HP after taking damage is: " << this->_hitPoints << std::endl;
+	std::cout << m_name << " takes " << amount << " points of damage" << std::endl;
+	m_hitPoints -= amount;
+	std::cout << "His amount of HP after taking damage is: " << m_hitPoints << std::endl;
 }

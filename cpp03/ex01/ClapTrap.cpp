@@ -6,38 +6,34 @@
 /*   By: irifarac <irifarac@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 10:12:03 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/21 10:47:28 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:53:29 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap() : _name("ClapTrap"), _hitPoints(10), _energyPoints(10), _damage(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(const std::string &name) : _name(name), _hitPoints(10), _energyPoints(10), _damage(0)
 {
 	std::cout << "Constructor: " << name << " called" << std::endl;
-	this->_name = name;
-	this->_hitPoints = 10;
-	this->_energyPoints = 10;
-	this->_damage = 0;
 }
 
-ClapTrap::~ClapTrap(void)
+ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor: " << this->_name << " called" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &obj)
+ClapTrap::ClapTrap(const ClapTrap &obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &obj)
+ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this == &obj)
@@ -56,7 +52,7 @@ void	ClapTrap::attack(const std::string &target)
 		std::cout << this->_name << " has no energy" << std::endl;
 		return ;
 	}
-	std::cout << this->_name << " attacks " << target << ", causing " << this->_damage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap: " << _name << " attacks \"" << target << "\", causing " << this->_damage << " points of damage!" << std::endl;
 	this->_energyPoints -= 1;
 	std::cout << "His amount of energy after attacking is: " << this->_energyPoints << std::endl;
 }
