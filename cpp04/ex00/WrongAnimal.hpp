@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:12:45 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/23 10:20:53 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:26:15 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 class	WrongAnimal
 {
 	public:
-		WrongAnimal(void);
+		WrongAnimal();
+		explicit WrongAnimal(const std::string &type) : m_type(type) {}
 		WrongAnimal(const WrongAnimal &obj);
 		WrongAnimal	&operator=(const WrongAnimal &obj);
-		~WrongAnimal(void);
+		~WrongAnimal();
 
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		const std::string	&getType() const;
+		void				makeSound() const;
 	protected:
-		std::string	_type;
+		std::string	m_type;
 };
 #endif

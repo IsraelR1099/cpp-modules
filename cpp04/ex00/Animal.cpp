@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.c                                           :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:28:41 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/22 20:22:10 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:25:40 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void)
+Animal::Animal() : m_type("AnimalDefault")
 {
 	std::cout << "Animal constructor called" << std::endl;
-	this->_type = "Animal";
 }
 
 Animal::Animal(const Animal &obj)
@@ -24,7 +23,7 @@ Animal::Animal(const Animal &obj)
 	*this = obj;
 }
 
-Animal::~Animal(void)
+Animal::~Animal()
 {
 	std::cout << "Animal destructor called" << std::endl;
 }
@@ -32,17 +31,17 @@ Animal::~Animal(void)
 Animal &Animal::operator=(const Animal &obj)
 {
 	std::cout << "Animal assignation operator called" << std::endl;
-	if (this == &obj)
-		return (*this);
+	if (this != &obj)
+		m_type = obj.m_type;
 	return (*this);
 }
 
-void Animal::makeSound(void) const
+void Animal::makeSound() const
 {
 	std::cout << "Animal is making noise" << std::endl;
 }
 
-std::string	Animal::getType(void) const
+const std::string	&Animal::getType() const
 {
-	return (this->_type);
+	return (m_type);
 }

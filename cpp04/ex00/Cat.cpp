@@ -6,41 +6,40 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:34:36 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/22 20:45:12 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:47:32 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void)
+Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Cat constructor called" << std::endl;
-	this->_type = "Cat";
 }
 
 Cat::Cat(const Cat &obj) : Animal(obj)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	this->_type = obj._type;
 }
 
-Cat::~Cat(void)
+Cat::~Cat()
 {
 	std::cout << "Cat destructor called" << std::endl;
 }
 
 Cat	&Cat::operator=(const Cat &obj)
 {
-	this->_type = obj._type;
+	if (this != &obj)
+		Animal::operator=(obj);
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+void	Cat::makeSound() const
 {
 	std::cout << "Meowwwwwww" << std::endl;
 }
 
-std::string	Cat::getType(void) const
+const std::string	&Cat::getType() const
 {
-	return (this->_type);
+	return (m_type);
 }

@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:26:03 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/23 20:56:52 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:14:51 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 class	Cat : public Animal
 {
 	public:
-		Cat(void);
+		Cat();
 		Cat(const Cat &obj);
-		~Cat(void);
+		virtual ~Cat();
 		Cat	&operator=(const Cat &obj);
 
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		const std::string	&getType() const;
+		virtual void		makeSound() const;
 	private:
 		Brain	*_brain;
 };

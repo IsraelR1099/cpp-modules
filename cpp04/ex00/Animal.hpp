@@ -6,7 +6,7 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:17:30 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/23 10:39:44 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:40:03 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 class	Animal
 {
 	public:
-		Animal(void);
+		Animal();
+		explicit Animal(const std::string &type) : m_type(type) {}
 		Animal(const Animal &obj);
-		virtual	~Animal(void);
+		virtual	~Animal();
 		Animal &operator=(const Animal &obj);
 
-		std::string		getType(void) const;
-		virtual void	makeSound(void) const;
+		const std::string		&getType() const;
+		virtual void			makeSound() const;
 	protected:
-		std::string	_type;
+		std::string	m_type;
 };
 #endif

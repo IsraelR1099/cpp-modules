@@ -6,16 +6,15 @@
 /*   By: irifarac <irifarac@student42.barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:15:19 by irifarac          #+#    #+#             */
-/*   Updated: 2023/06/23 09:49:28 by irifarac         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:23:00 by israel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void)
+WrongAnimal::WrongAnimal() : m_type("WrongAnimal")
 {
 	std::cout << "WrongAnimal constructor called" << std::endl;
-	this->_type = "WrongAnimal";
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &obj)
@@ -24,23 +23,24 @@ WrongAnimal::WrongAnimal(const WrongAnimal &obj)
 	*this = obj;
 }
 
-WrongAnimal::~WrongAnimal(void)
+WrongAnimal::~WrongAnimal()
 {
 	std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &obj)
 {
-	this->_type = obj._type;
+	if (this != &obj)
+		m_type = obj.m_type;
 	return (*this);
 }
 
-void	WrongAnimal::makeSound(void) const
+void	WrongAnimal::makeSound() const
 {
 	std::cout << "WrongAnimal is making noise" << std::endl;
 }
 
-std::string	WrongAnimal::getType(void) const
+const std::string	&WrongAnimal::getType() const
 {
-	return (this->_type);
+	return (m_type);
 }
